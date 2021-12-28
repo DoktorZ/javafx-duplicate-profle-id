@@ -10,10 +10,9 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>17</maven.compiler.release>
+
         <javafx-version-16>16</javafx-version-16>
         <javafx-version-17>17.0.1</javafx-version-17>
-
-        <javafx-version>${javafx-version-17}</javafx-version>
 
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     </properties>
@@ -40,6 +39,24 @@
             <version>${javafx-version}</version>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>jfx16</id>
+            <properties>
+                <javafx-version>${javafx-version-16}</javafx-version>
+            </properties>
+        </profile>
+        <profile>
+            <id>jfx17</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <javafx-version>${javafx-version-17}</javafx-version>
+            </properties>
+        </profile>
+    </profiles>
 
     <build>
         <plugins>
